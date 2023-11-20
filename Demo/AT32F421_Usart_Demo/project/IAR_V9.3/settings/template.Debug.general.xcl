@@ -1,0 +1,15 @@
+"C:\Program Files (x86)\IAR Systems\Embedded Workbench 9.1\arm\bin\armPROC.dll" 
+
+"C:\Program Files (x86)\IAR Systems\Embedded Workbench 9.1\arm\bin\armJET.dll" 
+
+"X:\Temp\to_Shelton\workbench\projectTemplate\AT32F421\iar_v9.3\Debug\Exe\template.out" 
+
+--plugin="C:\Program Files (x86)\IAR Systems\Embedded Workbench 9.1\arm\bin\armbat.dll" 
+
+--device_macro="C:\Program Files (x86)\IAR Systems\Embedded Workbench 9.1\arm/config/debugger/ArteryTek/AT32F421xx.dmac" 
+
+--flash_loader="C:\Program Files (x86)\IAR Systems\Embedded Workbench 9.1\arm/config/flashloader/ArteryTek/AT32F421/AT32F421C8T7/FlashAT32F421C8T7.board" 
+
+
+
+

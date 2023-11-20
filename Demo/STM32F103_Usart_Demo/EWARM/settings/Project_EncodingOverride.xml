@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<userOverrides>
+    <override>
+        <path>D:\ElectronicDevelop\Project\Usart\STM32F103_Usart_Demo\Core\Src\main.c</path>
+        <encoding>System</encoding>
+    </override>
+    <override>
+        <path>D:\ElectronicDevelop\Project\Usart\STM32F103_Usart_Demo\rklibrary\usart\rk_usart.c</path>
+        <encoding>System</encoding>
+    </override>
+    <override>
+        <path>D:\ElectronicDevelop\Project\Usart\STM32F103_Usart_Demo\rklibrary\usart\rk_usart.h</path>
+        <encoding>System</encoding>
+    </override>
+    <override>
+        <path>E:\Library\RKLibrary\usart\rk_usart.c</path>
+        <encoding>System</encoding>
+    </override>
+    <override>
+        <path>E:\Library\RKLibrary\usart\rk_usart.h</path>
+        <encoding>System</encoding>
+    </override>
+</userOverrides>

@@ -1,0 +1,15 @@
+"C:\Program Files\Embedded Workbench 9.1\arm\bin\armPROC.dll" 
+
+"C:\Program Files\Embedded Workbench 9.1\arm\bin\armSTLINK.dll" 
+
+"D:\ElectronicDevelop\Project\Usart\STM32F103_Usart_Demo\EWARM\STM32F103_Usart_Demo\Exe\STM32F103_Usart_Demo.out" 
+
+--plugin="C:\Program Files\Embedded Workbench 9.1\arm\bin\armbat.dll" 
+
+--device_macro="C:\Program Files\Embedded Workbench 9.1\arm/config/debugger/ST/STM32F1xx.dmac" 
+
+--flash_loader="C:\Program Files\Embedded Workbench 9.1\arm/config/flashloader/ST/FlashSTM32F10xx8.board" 
+
+
+
+

@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Root>
+    <MCUInfo>
+        <MCUSerials>AT32F421</MCUSerials>
+        <MCUName>AT32F421C8T7</MCUName>
+        <MCUPackage>LQFP48</MCUPackage>
+    </MCUInfo>
+    <CRC>
+        <Mode>
+            <ModeSub name="CRC_State" value="TRUE"/>
+        </Mode>
+        <Parameters>
+            <ParametersSub name="CRCPolynomialLength" value="CRC_POLY_SIZE_16B"/>
+            <ParametersSub name="CRCPolynomialValue_16" value="8005"/>
+            <ParametersSub name="InputDataReverseMode" value="CRC_REVERSE_INPUT_BY_WORD"/>
+            <ParametersSub name="OutputDataReverseMode" value="CRC_REVERSE_OUTPUT_DATA"/>
+        </Parameters>
+    </CRC>
+    <DEBUG>
+        <Mode>
+            <ModeSub name="SWD" value="TRUE"/>
+        </Mode>
+    </DEBUG>
+    <USART2>
+        <Mode>
+            <ModeSub name="Mode" value="Asynchronous"/>
+        </Mode>
+    </USART2>
+    <DMA>
+        <USART2_RX>
+            <ParametersSub name="Instance" value="DMA1_Channel5"/>
+            <ParametersSub name="Direction" value=""/>
+            <ParametersSub name="PeriphInc" value=""/>
+            <ParametersSub name="MemInc" value=""/>
+            <ParametersSub name="PeriphDataAlignment" value=""/>
+            <ParametersSub name="MemDataAlignment" value=""/>
+            <ParametersSub name="Mode" value=""/>
+            <ParametersSub name="Priority" value="DMA_PRIORITY_MEDIUM"/>
+            <ParametersSub name="DMA_Handle" value=""/>
+        </USART2_RX>
+        <USART2_TX>
+            <ParametersSub name="Instance" value="DMA1_Channel4"/>
+            <ParametersSub name="Direction" value=""/>
+            <ParametersSub name="PeriphInc" value=""/>
+            <ParametersSub name="MemInc" value=""/>
+            <ParametersSub name="PeriphDataAlignment" value=""/>
+            <ParametersSub name="MemDataAlignment" value=""/>
+            <ParametersSub name="Mode" value=""/>
+            <ParametersSub name="Priority" value=""/>
+            <ParametersSub name="DMA_Handle" value=""/>
+        </USART2_TX>
+    </DMA>
+    <NVIC>
+        <SysTick_Handler>0;0;0</SysTick_Handler>
+        <FLASH_IRQHandler>0;0;0</FLASH_IRQHandler>
+        <CRM_IRQHandler>0;0;0</CRM_IRQHandler>
+        <DMA1_Channel5_4_IRQHandler>1;0;0</DMA1_Channel5_4_IRQHandler>
+        <USART2_IRQHandler>1;0;0</USART2_IRQHandler>
+    </NVIC>
+    <ClockConfiguration>
+        <lextbypass>0</lextbypass>
+        <rtcsel>0</rtcsel>
+        <hext>8.000000</hext>
+        <hextbypass>0</hextbypass>
+        <pllhextdiv>0</pllhextdiv>
+        <pllrcs>1</pllrcs>
+        <pllmode>0</pllmode>
+        <pllmult>30</pllmult>
+        <pllms>1</pllms>
+        <pllns>120</pllns>
+        <pllfr>8</pllfr>
+        <sclkselect>1</sclkselect>
+        <ahbdiv>1</ahbdiv>
+        <apb1div>1</apb1div>
+        <apb2div>1</apb2div>
+        <hicktosclk>0</hicktosclk>
+        <clkout>0</clkout>
+        <clkoutdiv>1</clkoutdiv>
+        <clkoutpinselect>0</clkoutpinselect>
+        <adcswitch>1</adcswitch>
+        <adcdiv>6</adcdiv>
+    </ClockConfiguration>
+    <PINInfo>
+        <PinSub pinname="PA2" signalname="USART2_TX" signaltype="2"/>
+        <PinSub pinname="PA3" signalname="USART2_RX" signaltype="2"/>
+        <PinSub pinname="PA13" signalname="DEBUG_SWDIO" signaltype="2"/>
+        <PinSub pinname="PA14" signalname="DEBUG_SWCLK" signaltype="2"/>
+    </PINInfo>
+    <ProjectInfomation>
+        <ProjectName>RKUsart_Demo</ProjectName>
+        <ProjectLocation>D:/ElectronicDevelop/Project/Usart</ProjectLocation>
+        <ToolchainIDE>IAR_V9.3</ToolchainIDE>
+        <KeepUserCode>true</KeepUserCode>
+        <MinHeapSize>0x400</MinHeapSize>
+        <MinStackSize>0x800</MinStackSize>
+        <UseFirmware>true</UseFirmware>
+        <UseFirmwareZip>false</UseFirmwareZip>
+        <FirmwarePath></FirmwarePath>
+        <FirmwareFolderPath>E:/Library/ArteryAT32/AT32F421_Firmware_Library</FirmwareFolderPath>
+    </ProjectInfomation>
+</Root>

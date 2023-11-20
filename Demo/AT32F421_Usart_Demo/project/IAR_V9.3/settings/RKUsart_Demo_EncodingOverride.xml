@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<userOverrides>
+    <override>
+        <path>D:\ElectronicDevelop\Project\Usart\RKUsart_Demo\project\src\main.c</path>
+        <encoding>System</encoding>
+    </override>
+    <override>
+        <path>D:\ElectronicDevelop\Project\Usart\RKUsart_Demo\rklibrary\inc\rk_usart.h</path>
+        <encoding>System</encoding>
+    </override>
+    <override>
+        <path>D:\ElectronicDevelop\Project\Usart\RKUsart_Demo\rklibrary\usart\rk_usart.c</path>
+        <encoding>System</encoding>
+    </override>
+    <override>
+        <path>D:\ElectronicDevelop\Project\Usart\RKUsart_Demo\rklibrary\usart\rk_usart.h</path>
+        <encoding>System</encoding>
+    </override>
+    <override>
+        <path>E:\Library\RKLibrary\usart\rk_usart.c</path>
+        <encoding>System</encoding>
+    </override>
+    <override>
+        <path>E:\Library\RKLibrary\usart\rk_usart.h</path>
+        <encoding>System</encoding>
+    </override>
+</userOverrides>
