@@ -1434,7 +1434,7 @@
         <group>
             <name>rklibrary</name>
             <file>
-                <name>E:\Library\RKLibrary\usart\rk_usart.c</name>
+                <name>$PROJ_DIR$\..\..\..\usart\rk_usart.c</name>
             </file>
         </group>
         <group>

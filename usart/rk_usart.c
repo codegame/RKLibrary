@@ -53,7 +53,7 @@ RK_Usart_Handles * UartHandles;
 
 /* USER CODE BEGIN -----------------------------------------------------------*/
 
-__weak uint16_t RK_Usart_Crc16(uint8_t *ptr, uint16_t length) //�ṩ�û������Զ���CRC16
+__weak uint16_t RK_Usart_Crc16(uint8_t *ptr, uint16_t length)
 {
   uint16_t crc = 0xffff; 
   uint16_t i;
@@ -166,7 +166,7 @@ void RK_Usart_RxCallback(RK_Usart_PhyId PhyId)
 {
   if ((PhyId < 1) || (PhyId > RK_USART_HANDLE_COUNT)) return;  
   RK_Usart_HandleTypeDef * _handle = (*UartHandles)[PhyId -1];  
-  dma_channel_enable(_handle->rx_dma , FALSE);//�ر�RX�ж�
+  dma_channel_enable(_handle->rx_dma , FALSE);
   if(usart_flag_get(_handle->usart , USART_IDLEF_FLAG) != RESET)
   {
      usart_data_receive(_handle->usart);   
@@ -177,39 +177,39 @@ void RK_Usart_RxCallback(RK_Usart_PhyId PhyId)
        uint16_t _Crc16 = 0;
        RK_Usart_DataPackDef * _RxPack = (RK_Usart_DataPackDef *)_handle->rxBuff;
        if (_RxPack->head == RK_USART_CMD_RESEND)
-       { //�ط��ϴε�����
+       { 
          RK_Usart_TxError_Resend(_handle);
-         dma_channel_enable(_handle->rx_dma, TRUE); //�ؿ�RX�ж�
-         return; //�˳��ж�   
+         dma_channel_enable(_handle->rx_dma, TRUE);
+         return;   
        }
        
        if (_handle->rx_crc) 
-       { //��������CRCУ��
+       { 
           if ( _handle->rx_Count > 6 )
-             _Crc16 = RK_Usart_Crc16(_RxPack->Buff, _handle->rx_Count -6 ); //����CRC16-ModBus
+             _Crc16 = RK_Usart_Crc16(_RxPack->Buff, _handle->rx_Count -6 ); //CRC16-ModBus
           
           if (_Crc16 != _RxPack->crc ) 
-          { //CRC16У��ʧ��
-            if (_handle->resend) RK_Usart_RxError_Resend(_handle); //�ط�����
-            dma_channel_enable(_handle->rx_dma, TRUE); //�ؿ�RX�ж�
-            return; //�˳��ж�
+          { 
+            if (_handle->resend) RK_Usart_RxError_Resend(_handle); 
+            dma_channel_enable(_handle->rx_dma, TRUE);
+            return; 
           } 
           
           if (_handle->RXCallback !=NULL)
            {
-             _handle->RXCallback(_RxPack->Buff , _handle->rx_Count - 6 ); //�û����ݴ������    
+             _handle->RXCallback(_RxPack->Buff , _handle->rx_Count - 6 ); 
            } 
         } else
         {
           if (_handle->RXCallback !=NULL)
            {
-             _handle->RXCallback(_handle->rxBuff , _handle->rx_Count ); //�û����ݴ������    
+             _handle->RXCallback(_handle->rxBuff , _handle->rx_Count );  
            }
         }
      }
   }
  
-  dma_channel_enable(_handle->rx_dma, TRUE); //�ؿ�RX�ж�
+  dma_channel_enable(_handle->rx_dma, TRUE); 
     
 }
 
@@ -227,52 +227,50 @@ void RK_Usart_RxCallback(RK_Usart_PhyId PhyId)
   
   if((__HAL_UART_GET_FLAG(_handle->usart,UART_FLAG_IDLE) != RESET)) 
   {
-     __HAL_UART_CLEAR_IDLEFLAG(_handle->usart);   //���idle��־;
+     __HAL_UART_CLEAR_IDLEFLAG(_handle->usart); 
     
-     _handle->rx_Count = _handle->rx_Size + RK_USART_HEAD_SIZE - __HAL_DMA_GET_COUNTER(_handle->usart->hdmarx); //����������ݴ�С
-     HAL_UART_DMAStop(_handle->usart); //�ر�RX�ж�
+     _handle->rx_Count = _handle->rx_Size + RK_USART_HEAD_SIZE - __HAL_DMA_GET_COUNTER(_handle->usart->hdmarx); 
+     HAL_UART_DMAStop(_handle->usart);
      if ( _handle->rx_Count > 0 && _handle->rx_Count < (_handle->rx_Size + RK_USART_HEAD_SIZE) )
      {
        uint16_t _Crc16 = 0;     
        RK_Usart_DataPackDef * _RxPack = (RK_Usart_DataPackDef *)_handle->rxBuff;
-       //HAL_UART_DMAStop(_handle->usart); //�ر�RX�ж� 
-       //SCB_InvalidateDCache_by_Addr((uint32_t *)_ctx->rxBuff, RKL_Uart_RX_BUFF_SIZE);//����Cache��Ч����ͬ��RAM��cache����
-         
+  
        if (_RxPack->head == RK_USART_CMD_RESEND)
-       { //�ط��ϴε�����
+       { 
          RK_Usart_TxError_Resend(_handle);
          HAL_UART_Receive_DMA(_handle->usart,_handle->rxBuff ,(_handle->rx_Size + RK_USART_HEAD_SIZE));  
          __HAL_UART_DISABLE_IT(_handle->usart, UART_IT_ERR);
          __HAL_UART_DISABLE_IT(_handle->usart, UART_IT_PE);
          __HAL_UART_CLEAR_OREFLAG(_handle->usart); 
-         return; //�˳��ж�   
+         return;  
        }
        
        if (_handle->rx_crc) 
-       { //��������CRCУ��
+       { 
          
           if (_RxPack->len > 1 )
-             _Crc16 = RK_Usart_Crc16(_RxPack->Buff, _RxPack->len ); //����CRC16-ModBus
+             _Crc16 = RK_Usart_Crc16(_RxPack->Buff, _RxPack->len ); //CRC16-ModBus
           
           if (_Crc16 != _RxPack->crc ) 
-          { //CRC16У��ʧ��
-            if (_handle->resend) RK_Usart_RxError_Resend(_handle); //�ط�����
+          { 
+            if (_handle->resend) RK_Usart_RxError_Resend(_handle); 
             HAL_UART_Receive_DMA(_handle->usart,_handle->rxBuff ,_handle->rx_Size + RK_USART_HEAD_SIZE);  
             __HAL_UART_DISABLE_IT(_handle->usart, UART_IT_ERR);
             __HAL_UART_DISABLE_IT(_handle->usart, UART_IT_PE);
             __HAL_UART_CLEAR_OREFLAG(_handle->usart);
-            return; //�˳��ж�
+            return; 
           } 
           
           if (_handle->RXCallback !=NULL)
            {
-             _handle->RXCallback(_RxPack->Buff , _handle->rx_Count - 6 ); //�û����ݴ������    
+             _handle->RXCallback(_RxPack->Buff , _handle->rx_Count - 6 );   
            } 
         } else
         {
           if (_handle->RXCallback !=NULL)
            {
-             _handle->RXCallback(_handle->rxBuff , _handle->rx_Count ); //�û����ݴ������    
+             _handle->RXCallback(_handle->rxBuff , _handle->rx_Count );   
            }
         }
      }
@@ -300,20 +298,20 @@ bool RK_Usart_Config(void)
     
     _handle->txBuff = (uint8_t *)malloc(_handle->tx_Size + RK_USART_HEAD_SIZE);
     _handle->rxBuff = (uint8_t *)malloc(_handle->rx_Size + RK_USART_HEAD_SIZE);
-    memset(_handle->txBuff,0,_handle->tx_Size + RK_USART_HEAD_SIZE); //���û���Ϊ0
-    memset(_handle->rxBuff,0,_handle->rx_Size + RK_USART_HEAD_SIZE); //���û���Ϊ0
+    memset(_handle->txBuff,0,_handle->tx_Size + RK_USART_HEAD_SIZE); 
+    memset(_handle->rxBuff,0,_handle->rx_Size + RK_USART_HEAD_SIZE); 
      
 #ifdef  ARTERY_AT32  
-     dma_channel_enable(_handle->tx_dma, FALSE);//��TX�ж�
+     dma_channel_enable(_handle->tx_dma, FALSE);
      wk_dma_channel_config(_handle->tx_dma, (uint32_t)&_handle->usart->dt,(uint32_t)_handle->txBuff, 0);
-     dma_channel_enable(_handle->tx_dma, TRUE);//��TX�ж�
+     dma_channel_enable(_handle->tx_dma, TRUE);
     
-     dma_channel_enable(_handle->rx_dma, FALSE);//��RX�ж�
+     dma_channel_enable(_handle->rx_dma, FALSE);
      wk_dma_channel_config(_handle->rx_dma, (uint32_t)&_handle->usart->dt, (uint32_t)_handle->rxBuff, _handle->rx_Size + RK_USART_HEAD_SIZE);
-     dma_channel_enable(_handle->rx_dma, TRUE);//��RX�ж�
+     dma_channel_enable(_handle->rx_dma, TRUE);
  
      usart_flag_clear(_handle->usart,USART_IDLEF_FLAG);
-     usart_interrupt_enable(_handle->usart, USART_IDLE_INT, TRUE); //�򿪿����ж�
+     usart_interrupt_enable(_handle->usart, USART_IDLE_INT, TRUE); 
      
 #endif
      
@@ -336,7 +334,7 @@ bool RK_Usart_Init(RK_Usart_Handles *husart)
   
   UartHandles = husart;
  
-  return RK_Usart_Config(); //�������д���
+  return RK_Usart_Config(); 
 
 }
 

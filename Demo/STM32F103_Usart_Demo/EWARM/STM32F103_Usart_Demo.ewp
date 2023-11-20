@@ -353,8 +353,8 @@
                     <state>$PROJ_DIR$/../Drivers/STM32F1xx_HAL_Driver/Inc/Legacy</state>
                     <state>$PROJ_DIR$/../Drivers/CMSIS/Device/ST/STM32F1xx/Include</state>
                     <state>$PROJ_DIR$/../Drivers/CMSIS/Include</state>
-                    <state>E:/Library/RKLibrary/inc</state>
-                    <state>E:/Library/RKLibrary/usart</state>
+                    <state>$PROJ_DIR$/../../../inc</state>
+                    <state>$PROJ_DIR$/../../../usart</state>
                 </option>
                 <option>
                     <name>CCStdIncCheck</name>
@@ -1094,7 +1094,7 @@
         <group>
             <name>rklibrary</name>
             <file>
-                <name>E:\Library\RKLibrary\usart\rk_usart.c</name>
+                <name>$PROJ_DIR$\..\..\..\usart\rk_usart.c</name>
             </file>
         </group>
         <group>

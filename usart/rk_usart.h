@@ -14,13 +14,13 @@
 
 
 Features:
-**1.ÊÕ·¢Ê¹ÓÃDMAºÍ¿ÕÏĞÖĞ¶Ï**
-**2.Ö§³Ö²»¶¨³¤Êı¾İ·¢ËÍ**
-**3.Ö§³Ö×î¶à16¸ö´®¿ÚÍ¬Ê±¹¤×÷**
-**4.Ö§³ÖÊÕ·¢CRC16Í¸Ã÷Ğ£Ñé**
-**5.Ö§³Ö×Ô¶¨ÒåCRC16Ğ£ÑéËã·¨**
-**6.Ö§³ÖĞ£Ñé´íÎó×Ô¶¯ÇëÇóÖØ·¢**
-**7.Ö§³Ö×Ô¶¨Òå»º³åÇø´óĞ¡**
+**1.æ”¶å‘ä½¿ç”¨DMAå’Œç©ºé—²ä¸­æ–­**
+**2.æ”¯æŒä¸å®šé•¿æ•°æ®å‘é€**
+**3.æ”¯æŒæœ€å¤š16ä¸ªä¸²å£åŒæ—¶å·¥ä½œ**
+**4.æ”¯æŒæ”¶å‘CRC16é€æ˜æ ¡éªŒ**
+**5.æ”¯æŒè‡ªå®šä¹‰CRC16æ ¡éªŒç®—æ³•**
+**6.æ”¯æŒæ ¡éªŒé”™è¯¯è‡ªåŠ¨è¯·æ±‚é‡å‘**
+**7.æ”¯æŒè‡ªå®šä¹‰ç¼“å†²åŒºå¤§å°**
 
     
   ******************************************************************************
@@ -119,10 +119,10 @@ Features:
       
 /* Private includes ----------------------------------------------------------*/
 /* USER CODE BEGIN Includes */
-#define  RK_USART_HEAD_SIZE             6       //°üÍ·´óĞ¡ head  + len + crc =6byte
-#define  RK_USART_HANDLE_COUNT          16      //×î´óÖ§³Ö´®¿ÚĞòÁĞ
-#define  RK_USART_CMD_RESEND            0x3FF3  //ÖØ·¢Ö¸Áî
-#define  RK_USART_PACK_HEAD             0xEE77  //head CRC16¼ÆËã
+#define  RK_USART_HEAD_SIZE             6       //åŒ…å¤´å¤§å° head  + len + crc =6byte
+#define  RK_USART_HANDLE_COUNT          16      //æœ€å¤§æ”¯æŒä¸²å£åºåˆ—
+#define  RK_USART_CMD_RESEND            0x3FF3  //é‡å‘æŒ‡ä»¤
+#define  RK_USART_PACK_HEAD             0xEE77  //head CRC16è®¡ç®—
 /* USER CODE END Includes */
 
 
@@ -131,10 +131,10 @@ Features:
    
 typedef enum {RK_Usart_Phy_1=1,RK_Usart_Phy_2,RK_Usart_Phy_3,RK_Usart_Phy_4,RK_Usart_Phy_5,RK_Usart_Phy_6,
               RK_Usart_Phy_7,RK_Usart_Phy_8,RK_Usart_Phy_9,RK_Usart_Phy_10,RK_Usart_Phy_11,RK_Usart_Phy_12,
-              RK_Usart_Phy_13,RK_Usart_Phy_14,RK_Usart_Phy_15,RK_Usart_Phy_16} RK_Usart_PhyId; //Usart ±àºÅ
+              RK_Usart_Phy_13,RK_Usart_Phy_14,RK_Usart_Phy_15,RK_Usart_Phy_16} RK_Usart_PhyId; //Usart ç¼–å·
 
  
-typedef void(*RK_Usart_Callback)(uint8_t * Data ,uint16_t); //»Øµ÷º¯Êı¶¨Òå
+typedef void(*RK_Usart_Callback)(uint8_t * Data ,uint16_t); //å›è°ƒå‡½æ•°å®šä¹‰
 
  
 typedef struct 
@@ -148,9 +148,9 @@ typedef struct
 
 typedef struct 
 { 
-    RK_Usart_PhyId PhyId;  //´®¿Ú±àºÅ ±ØĞë´óÓÚ0
+    RK_Usart_PhyId PhyId;  //ä¸²å£ç¼–å· å¿…é¡»å¤§äº0
 #ifdef  ARTERY_AT32  
-    usart_type* usart;     //´®¿Ú
+    usart_type* usart;     //ä¸²å£
     dma_channel_type* tx_dma;  //TX DMA
     dma_channel_type* rx_dma;  //RX DMA
 #endif 
@@ -158,32 +158,32 @@ typedef struct
 #if defined (ST_STM32L0XX) || defined (ST_STM32F0XX) || defined (ST_STM32F10X) || \
     defined (ST_STM32F4XX) || defined (ST_STM32F3XX) 
      
-    UART_HandleTypeDef *usart; //´®¿Ú
+    UART_HandleTypeDef *usart; //ä¸²å£
 #endif 
     
     bool  tx_crc;       //TX CRC16 
     bool  rx_crc;       //RX CRC16  
-    bool  busy;         //UsartÃ¦Âµ
-    bool  resend;       //Èç¹ûCRC16Ğ£Ñé´íÎóresend>0ÔòÖØ·¢resend´ÎÊı
-    uint16_t tx_Count;  //×îºóÒ»´Î·¢ËÍ³¤¶È
-    uint16_t rx_Count;  //×îºóÒ»´Î½ÓÊÕ³¤¶È
+    bool  busy;         //Usartå¿™ç¢Œ
+    bool  resend;       //å¦‚æœCRC16æ ¡éªŒé”™è¯¯resend>0åˆ™é‡å‘resendæ¬¡æ•°
+    uint16_t tx_Count;  //æœ€åä¸€æ¬¡å‘é€é•¿åº¦
+    uint16_t rx_Count;  //æœ€åä¸€æ¬¡æ¥æ”¶é•¿åº¦
     RK_Usart_Callback RXCallback;
-    uint16_t tx_Size;   //Tx»º³å´óĞ¡
-    uint16_t rx_Size;   //Rx»º³å´óĞ¡
+    uint16_t tx_Size;   //Txç¼“å†²å¤§å°
+    uint16_t rx_Size;   //Rxç¼“å†²å¤§å°
     uint8_t * txBuff;   //DMA transmit buffer 
     uint8_t * rxBuff;   //DMA receive buffer
 } RK_Usart_HandleTypeDef; 
 
-typedef  RK_Usart_HandleTypeDef *RK_Usart_Handles[RK_USART_HANDLE_COUNT] ;  //Usart_Handle¶ÔÏó¹ÜÀí±í
+typedef  RK_Usart_HandleTypeDef *RK_Usart_Handles[RK_USART_HANDLE_COUNT] ;  //Usart_Handleå¯¹è±¡ç®¡ç†è¡¨
 
 /* USER CODE END ET */
 
 /* Exported functions prototypes ---------------------------------------------*/
 /* USER CODE BEGIN EFP */
-bool RK_Usart_Init(RK_Usart_Handles *husart); //³õÊ¼»¯
-void RK_Usart_DMA_Transmit(RK_Usart_PhyId PhyId, uint8_t *pData, uint16_t Size); //DMA·¢ËÍ
-void RK_Usart_RxCallback(RK_Usart_PhyId PhyId); //Ìí¼Óµ½xx_it.cÖĞ¶ÏÎÄ¼şIRQHandlerº¯ÊıÀï
-uint16_t RK_Usart_Crc16(uint8_t *ptr, uint16_t length); //Ìá¹©ÓÃ»§ÖØÔØCRC16Ëã·¨
+bool RK_Usart_Init(RK_Usart_Handles *husart); //åˆå§‹åŒ–
+void RK_Usart_DMA_Transmit(RK_Usart_PhyId PhyId, uint8_t *pData, uint16_t Size); //DMAå‘é€
+void RK_Usart_RxCallback(RK_Usart_PhyId PhyId); //æ·»åŠ åˆ°xx_it.cä¸­æ–­æ–‡ä»¶IRQHandlerå‡½æ•°é‡Œ
+uint16_t RK_Usart_Crc16(uint8_t *ptr, uint16_t length); //æä¾›ç”¨æˆ·é‡è½½CRC16ç®—æ³•
 
 /* USER CODE END EFP */
 

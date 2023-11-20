@@ -25,7 +25,7 @@ if not "%~1" == "" goto debugFile
 
 @echo on 
 
-"C:\Program Files\Embedded Workbench 9.1\common\bin\cspybat" -f "D:\ElectronicDevelop\Project\Usart\STM32F103_Usart_Demo\EWARM\settings\STM32F103_Usart_Demo.STM32F103_Usart_Demo.general.xcl" --backend -f "D:\ElectronicDevelop\Project\Usart\STM32F103_Usart_Demo\EWARM\settings\STM32F103_Usart_Demo.STM32F103_Usart_Demo.driver.xcl" 
+"C:\Program Files\Embedded Workbench 9.1\common\bin\cspybat" -f "E:\Library\RKLibrary\GitHub\Demo\STM32F103_Usart_Demo\EWARM\settings\STM32F103_Usart_Demo.STM32F103_Usart_Demo.general.xcl" --backend -f "E:\Library\RKLibrary\GitHub\Demo\STM32F103_Usart_Demo\EWARM\settings\STM32F103_Usart_Demo.STM32F103_Usart_Demo.driver.xcl" 
 
 @echo off 
 goto end 
@@ -34,7 +34,7 @@ goto end
 
 @echo on 
 
-"C:\Program Files\Embedded Workbench 9.1\common\bin\cspybat" -f "D:\ElectronicDevelop\Project\Usart\STM32F103_Usart_Demo\EWARM\settings\STM32F103_Usart_Demo.STM32F103_Usart_Demo.general.xcl" "--debug_file=%~1" --backend -f "D:\ElectronicDevelop\Project\Usart\STM32F103_Usart_Demo\EWARM\settings\STM32F103_Usart_Demo.STM32F103_Usart_Demo.driver.xcl" 
+"C:\Program Files\Embedded Workbench 9.1\common\bin\cspybat" -f "E:\Library\RKLibrary\GitHub\Demo\STM32F103_Usart_Demo\EWARM\settings\STM32F103_Usart_Demo.STM32F103_Usart_Demo.general.xcl" "--debug_file=%~1" --backend -f "E:\Library\RKLibrary\GitHub\Demo\STM32F103_Usart_Demo\EWARM\settings\STM32F103_Usart_Demo.STM32F103_Usart_Demo.driver.xcl" 
 
 @echo off 
 :end

@@ -349,8 +349,8 @@
                     <state>$PROJ_DIR$\..\..\libraries\cmsis\cm4\core_support</state>
                     <state>$PROJ_DIR$\..\..\libraries\cmsis\cm4\device_support</state>
                     <state>$PROJ_DIR$\..\inc</state>
-                    <state>E:/Library/RKLibrary/inc</state>
-                    <state>E:/Library/RKLibrary/usart</state>
+                    <state>$PROJ_DIR$\..\..\..\..\inc</state>
+                    <state>$PROJ_DIR$\..\..\..\..\usart</state>
                 </option>
                 <option>
                     <name>CCStdIncCheck</name>
@@ -2230,7 +2230,7 @@
     <group>
         <name>RKLibrary</name>
         <file>
-            <name>E:\Library\RKLibrary\usart\rk_usart.c</name>
+            <name>$PROJ_DIR$\..\..\..\..\usart\rk_usart.c</name>
         </file>
     </group>
     <group>
