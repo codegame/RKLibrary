@@ -1,8 +1,10 @@
 
+
+![LOGO](..\\Logo_Mini.png)
+
+
 RK Library
 ===========
-
-
 概览
 ------
  

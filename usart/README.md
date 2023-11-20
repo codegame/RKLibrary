@@ -1,7 +1,8 @@
 
+![LOGO](..\\..\\Logo_Mini.png)
+
 RK Usart 串口驱动库
 ===========
-
 [Documentation](http://)
 ------
 
