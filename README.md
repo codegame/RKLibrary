@@ -1,4 +1,6 @@
 
+[![LOGO](Logo_Mini.png "LOGO")]
+
 RK Library
 ===========
 
