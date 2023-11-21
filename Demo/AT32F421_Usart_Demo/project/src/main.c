@@ -75,7 +75,7 @@ uint16_t RK_Usart_Crc16(uint8_t *ptr, uint16_t length)
   if (length < 1 ) return 0;
   if ((length %4) !=0 )
     { 
-      memset(&ptr[length],0,3); ¯¹
+      memset(&ptr[length],0,3); î‡®
       _remainder =1;
     }
   crc_data_reset();
@@ -84,30 +84,30 @@ uint16_t RK_Usart_Crc16(uint8_t *ptr, uint16_t length)
 #endif
 
 
-//ÓÃ»§Usart2½ÓÊÕ»Øµ÷º¯Êý
+//ç”¨æˆ·Usart2æŽ¥æ”¶å›žè°ƒå‡½æ•°
 void MyUsart2_Rx(uint8_t * Data, uint16_t Size) 
 { 
-  //ÕâÀï´¦ÀíÊÕµ½µÄÊý¾Ý°ü
+  //è¿™é‡Œå¤„ç†æ”¶åˆ°çš„æ•°æ®åŒ…
   
   RK_Usart_DMA_Transmit(RK_Usart_Phy_2,(uint8_t*)Data, Size);
   
   return;
 }
   
-//RK_Usart¿â³õÊ¼»¯º¯Êý
+//RK_Usartåº“åˆå§‹åŒ–å‡½æ•°
 void  Usart_Init(void)
 {
-  RKL_Uart2.PhyId = RK_Usart_Phy_2; //ÄÚ²¿´®¿ÚÐòÁÐ±àºÅ
-  RKL_Uart2.usart = USART2;         //Ê¹ÓÃ´®¿Ú¶ÔÏó
+  RKL_Uart2.PhyId = RK_Usart_Phy_2; //å†…éƒ¨ä¸²å£åºåˆ—ç¼–å·
+  RKL_Uart2.usart = USART2;         //ä½¿ç”¨ä¸²å£å¯¹è±¡
   RKL_Uart2.tx_dma = DMA1_CHANNEL4; 
   RKL_Uart2.rx_dma = DMA1_CHANNEL5; 
-  RKL_Uart2.RXCallback = MyUsart2_Rx; //ÉèÖÃÓÃ»§RX½ÓÊÕ»Øµ÷º¯Êý
-  RKL_Uart2.tx_crc = false; //CRC Ð£ÑéºÍ
-  RKL_Uart2.rx_crc = false; //CCRC Ð£ÑéºÍ£¬Ð£ÑéÊ§°ÜÔò¶ªµô°ü
-  RKL_Uart2.resend = false; //´íÎóÖØ·¢
-  RKL_Uart2.tx_Size =128; //·¢ËÍ»º³å´óÐ¡Byte
-  RKL_Uart2.rx_Size =128; //½ÓÊÕ»º³å´óÐ¡Byte
-  RK_Usart_Handle[RKL_Uart2.PhyId -1]= &RKL_Uart2; //Ìí¼Ó¶ÔÏó½á¹¹µ½RKL_Uart¹ÜÀí¾ä±ú  
+  RKL_Uart2.RXCallback = MyUsart2_Rx; //è®¾ç½®ç”¨æˆ·RXæŽ¥æ”¶å›žè°ƒå‡½æ•°
+  RKL_Uart2.tx_crc = false; //CRC æ ¡éªŒå’Œ
+  RKL_Uart2.rx_crc = false; //CCRC æ ¡éªŒå’Œï¼Œæ ¡éªŒå¤±è´¥åˆ™ä¸¢æŽ‰åŒ…
+  RKL_Uart2.resend = false; //é”™è¯¯é‡å‘
+  RKL_Uart2.tx_Size =128; //å‘é€ç¼“å†²å¤§å°Byte
+  RKL_Uart2.rx_Size =128; //æŽ¥æ”¶ç¼“å†²å¤§å°Byte
+  RK_Usart_Handle[RKL_Uart2.PhyId -1]= &RKL_Uart2; //æ·»åŠ å¯¹è±¡ç»“æž„åˆ°RKL_Uartç®¡ç†å¥æŸ„  
   
   RK_Usart_Init(&RK_Usart_Handle);
 }

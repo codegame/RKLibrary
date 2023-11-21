@@ -65,7 +65,7 @@ uint16_t RK_Usart_Crc16(uint8_t *ptr, uint16_t length)
   if (length < 1 ) return 0;
   if ((length %4) !=0 )
     { 
-      memset(&ptr[length],0,3); //Ìî³ä0¶ÔÆë4×Ö½Ú·ñÔòÓ²¼þCRC¼ÆËã²»¶Ô
+      memset(&ptr[length],0,3); //å¡«å……0å¯¹é½4å­—èŠ‚å¦åˆ™ç¡¬ä»¶CRCè®¡ç®—ä¸å¯¹
       _remainder =1;
     }
   crc_data_reset();
@@ -74,7 +74,7 @@ uint16_t RK_Usart_Crc16(uint8_t *ptr, uint16_t length)
 #endif
 
 
-//ÓÃ»§Usart1½ÓÊÕ»Øµ÷º¯Êý
+//ç”¨æˆ·Usart1æŽ¥æ”¶å›žè°ƒå‡½æ•°
 void MyUsart1_Rx(uint8_t * Data, uint16_t Size) 
 { 
   
@@ -83,18 +83,18 @@ void MyUsart1_Rx(uint8_t * Data, uint16_t Size)
   return;
 }
   
-//RK_Usart¿â³õÊ¼»¯º¯Êý
+//RK_Usartåº“åˆå§‹åŒ–å‡½æ•°
 void  Usart_Init(void)
 {
-  RKL_Uart1.PhyId = RK_Usart_Phy_1; //ÄÚ²¿´®¿ÚÐòÁÐ±àºÅ
-  RKL_Uart1.usart = &huart1;         //Ê¹ÓÃ´®¿Ú¶ÔÏó
-  RKL_Uart1.RXCallback = MyUsart1_Rx; //ÉèÖÃÓÃ»§RX½ÓÊÕ»Øµ÷º¯Êý
-  RKL_Uart1.tx_crc = false; //CRC Ð£ÑéºÍ
-  RKL_Uart1.rx_crc = false; //CRC Ð£ÑéºÍ£¬Ð£ÑéÊ§°ÜÔò¶ªµô°ü
-  RKL_Uart1.resend = false; //´íÎóÖØ·¢
-  RKL_Uart1.tx_Size =128; //·¢ËÍ»º³å´óÐ¡Byte
-  RKL_Uart1.rx_Size =128; //½ÓÊÕ»º³å´óÐ¡Byte
-  RK_Usart_Handle[RKL_Uart1.PhyId -1]= &RKL_Uart1; //Ìí¼Ó¶ÔÏó½á¹¹µ½RKL_Uart¹ÜÀí¾ä±ú 
+  RKL_Uart1.PhyId = RK_Usart_Phy_1; //å†…éƒ¨ä¸²å£åºåˆ—ç¼–å·
+  RKL_Uart1.usart = &huart1;         //ä½¿ç”¨ä¸²å£å¯¹è±¡
+  RKL_Uart1.RXCallback = MyUsart1_Rx; //è®¾ç½®ç”¨æˆ·RXæŽ¥æ”¶å›žè°ƒå‡½æ•°
+  RKL_Uart1.tx_crc = false; //CRC æ ¡éªŒå’Œ
+  RKL_Uart1.rx_crc = false; //CRC æ ¡éªŒå’Œï¼Œæ ¡éªŒå¤±è´¥åˆ™ä¸¢æŽ‰åŒ…
+  RKL_Uart1.resend = false; //é”™è¯¯é‡å‘
+  RKL_Uart1.tx_Size =128; //å‘é€ç¼“å†²å¤§å°Byte
+  RKL_Uart1.rx_Size =128; //æŽ¥æ”¶ç¼“å†²å¤§å°Byte
+  RK_Usart_Handle[RKL_Uart1.PhyId -1]= &RKL_Uart1; //æ·»åŠ å¯¹è±¡ç»“æž„åˆ°RKL_Uartç®¡ç†å¥æŸ„ 
   RK_Usart_Init(&RK_Usart_Handle);
 }
 

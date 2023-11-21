@@ -23,9 +23,9 @@
 
 if ($debugfile -eq "")
 {
-& "C:\Program Files\Embedded Workbench 9.1\common\bin\cspybat" -f "E:\Library\RKLibrary\GitHub\Demo\STM32F103_Usart_Demo\EWARM\settings\STM32F103_Usart_Demo.STM32F103_Usart_Demo.general.xcl" --backend -f "E:\Library\RKLibrary\GitHub\Demo\STM32F103_Usart_Demo\EWARM\settings\STM32F103_Usart_Demo.STM32F103_Usart_Demo.driver.xcl" 
+& "C:\Program Files\Embedded Workbench 9.1\common\bin\cspybat" -f "E:\Library\RKLibrary\Demo\STM32F103_Usart_Demo\EWARM\settings\STM32F103_Usart_Demo.STM32F103_Usart_Demo.general.xcl" --backend -f "E:\Library\RKLibrary\Demo\STM32F103_Usart_Demo\EWARM\settings\STM32F103_Usart_Demo.STM32F103_Usart_Demo.driver.xcl" 
 }
 else
 {
-& "C:\Program Files\Embedded Workbench 9.1\common\bin\cspybat" -f "E:\Library\RKLibrary\GitHub\Demo\STM32F103_Usart_Demo\EWARM\settings\STM32F103_Usart_Demo.STM32F103_Usart_Demo.general.xcl" --debug_file=$debugfile --backend -f "E:\Library\RKLibrary\GitHub\Demo\STM32F103_Usart_Demo\EWARM\settings\STM32F103_Usart_Demo.STM32F103_Usart_Demo.driver.xcl" 
+& "C:\Program Files\Embedded Workbench 9.1\common\bin\cspybat" -f "E:\Library\RKLibrary\Demo\STM32F103_Usart_Demo\EWARM\settings\STM32F103_Usart_Demo.STM32F103_Usart_Demo.general.xcl" --debug_file=$debugfile --backend -f "E:\Library\RKLibrary\Demo\STM32F103_Usart_Demo\EWARM\settings\STM32F103_Usart_Demo.STM32F103_Usart_Demo.driver.xcl" 
 }

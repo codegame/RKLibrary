@@ -1,5 +1,5 @@
 
-![LOGO](Logo_Mini.png "LOGO")
+![RKLibrary](doc\\Logo_Mini.png)
 
 RK Library
 ===========

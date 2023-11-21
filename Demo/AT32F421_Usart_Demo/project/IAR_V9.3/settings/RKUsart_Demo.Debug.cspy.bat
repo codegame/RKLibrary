@@ -25,7 +25,7 @@ if not "%~1" == "" goto debugFile
 
 @echo on 
 
-"C:\Program Files\Embedded Workbench 9.1\common\bin\cspybat" -f "E:\Library\RKLibrary\GitHub\Demo\AT32F421_Usart_Demo\project\IAR_V9.3\settings\RKUsart_Demo.Debug.general.xcl" --backend -f "E:\Library\RKLibrary\GitHub\Demo\AT32F421_Usart_Demo\project\IAR_V9.3\settings\RKUsart_Demo.Debug.driver.xcl" 
+"C:\Program Files\Embedded Workbench 9.1\common\bin\cspybat" -f "E:\Library\RKLibrary\Demo\AT32F421_Usart_Demo\project\IAR_V9.3\settings\RKUsart_Demo.Debug.general.xcl" --backend -f "E:\Library\RKLibrary\Demo\AT32F421_Usart_Demo\project\IAR_V9.3\settings\RKUsart_Demo.Debug.driver.xcl" 
 
 @echo off 
 goto end 
@@ -34,7 +34,7 @@ goto end
 
 @echo on 
 
-"C:\Program Files\Embedded Workbench 9.1\common\bin\cspybat" -f "E:\Library\RKLibrary\GitHub\Demo\AT32F421_Usart_Demo\project\IAR_V9.3\settings\RKUsart_Demo.Debug.general.xcl" "--debug_file=%~1" --backend -f "E:\Library\RKLibrary\GitHub\Demo\AT32F421_Usart_Demo\project\IAR_V9.3\settings\RKUsart_Demo.Debug.driver.xcl" 
+"C:\Program Files\Embedded Workbench 9.1\common\bin\cspybat" -f "E:\Library\RKLibrary\Demo\AT32F421_Usart_Demo\project\IAR_V9.3\settings\RKUsart_Demo.Debug.general.xcl" "--debug_file=%~1" --backend -f "E:\Library\RKLibrary\Demo\AT32F421_Usart_Demo\project\IAR_V9.3\settings\RKUsart_Demo.Debug.driver.xcl" 
 
 @echo off 
 :end
