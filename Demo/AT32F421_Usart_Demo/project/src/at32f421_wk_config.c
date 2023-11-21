@@ -188,10 +188,10 @@ void wk_crc_init(void)
   /* add user code end crc_init 0 */
 
   crc_init_data_set(0xFFFFFFFF);
-  crc_poly_size_set(CRC_POLY_SIZE_16B);
-  crc_poly_value_set(0x8005);
-  crc_reverse_input_data_set(CRC_REVERSE_INPUT_BY_WORD);
-  crc_reverse_output_data_set(CRC_REVERSE_OUTPUT_DATA);
+  crc_poly_size_set(CRC_POLY_SIZE_32B);
+  crc_poly_value_set(0x4C11DB7);
+  crc_reverse_input_data_set(CRC_REVERSE_INPUT_NO_AFFECTE);
+  crc_reverse_output_data_set(CRC_REVERSE_OUTPUT_NO_AFFECTE);
   crc_data_reset();
 
   /* add user code begin crc_init 1 */
@@ -335,5 +335,19 @@ void wk_dma_channel_config(dma_channel_type* dmax_channely, uint32_t peripheral_
 }
 
 /* add user code begin 1 */
+void wk_gpio_config(void)
+{
+  gpio_init_type gpio_init_struct;
+  gpio_default_para_init(&gpio_init_struct);
 
+  /* gpio output config */
+  gpio_bits_write(GPIOA, GPIO_PINS_0, FALSE); 
+
+  gpio_init_struct.gpio_drive_strength = GPIO_DRIVE_STRENGTH_MODERATE;
+  gpio_init_struct.gpio_out_type = GPIO_OUTPUT_PUSH_PULL;
+  gpio_init_struct.gpio_mode = GPIO_MODE_OUTPUT;
+  gpio_init_struct.gpio_pins = GPIO_PINS_0;
+  gpio_init_struct.gpio_pull = GPIO_PULL_NONE;
+  gpio_init(GPIOA, &gpio_init_struct);
+}
 /* add user code end 1 */

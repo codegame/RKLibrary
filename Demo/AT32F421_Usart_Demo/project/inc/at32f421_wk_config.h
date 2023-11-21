@@ -82,7 +82,7 @@ extern "C" {
   void wk_dma_channel_config(dma_channel_type* dmax_channely, uint32_t peripheral_base_addr, uint32_t memory_base_addr, uint16_t buffer_size);
 
 /* add user code begin exported functions */
-
+void wk_gpio_config(void);
 /* add user code end exported functions */
 
 #ifdef __cplusplus

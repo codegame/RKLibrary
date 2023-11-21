@@ -1,4 +1,4 @@
-![RKLibrary](..\\doc\\Logo_Mini.png)
+![RKLibrary](../doc/Logo_Mini.png)
 
 RK Usart 串口驱动库
 ===========

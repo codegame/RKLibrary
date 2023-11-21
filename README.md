@@ -1,5 +1,5 @@
 
-![RKLibrary](doc\\Logo_Mini.png)
+![RKLibrary](doc/Logo_Mini.png)
 
 RK Library
 ===========

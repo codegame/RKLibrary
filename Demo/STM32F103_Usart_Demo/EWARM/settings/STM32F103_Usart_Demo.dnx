@@ -16,8 +16,8 @@
         <MemConfigValue>C:\Program Files\Embedded Workbench 9.1\arm\CONFIG\debugger\ST\STM32F103C8.ddf</MemConfigValue>
     </PlDriver>
     <ArmDriver>
-        <EnforceMemoryConfiguration>1</EnforceMemoryConfiguration>
         <EnableCache>0</EnableCache>
+        <EnforceMemoryConfiguration>1</EnforceMemoryConfiguration>
     </ArmDriver>
     <StLinkDriver>
         <stlinkserialNo>54FF6B064883504959431987</stlinkserialNo>

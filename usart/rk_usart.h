@@ -164,7 +164,7 @@ typedef struct
     bool  tx_crc;       //TX CRC16 
     bool  rx_crc;       //RX CRC16  
     bool  busy;         //Usart忙碌
-    bool  resend;       //如果CRC16校验错误resend>0则重发resend次数
+    bool  resend;       //如果CRC16校验错误
     uint16_t tx_Count;  //最后一次发送长度
     uint16_t rx_Count;  //最后一次接收长度
     RK_Usart_Callback RXCallback;

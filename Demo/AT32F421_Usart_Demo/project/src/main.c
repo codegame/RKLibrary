@@ -61,8 +61,8 @@
 
 RK_Usart_HandleTypeDef RKL_Uart2;
 RK_Usart_Handles RK_Usart_Handle ={NULL};
-
-
+static uint32_t table[256];
+static uint8_t Data[8192];
 /* add user code end function prototypes */
 
 /* private user code ---------------------------------------------------------*/
@@ -112,6 +112,61 @@ void  Usart_Init(void)
   RK_Usart_Init(&RK_Usart_Handle);
 }
 
+
+static uint32_t bitrev(uint32_t input, int bw)
+{
+    int i;
+    uint32_t var;
+    var = 0;
+    for(i=0; i<bw; i++)
+    {
+        if(input & 0x01)
+        {
+            var |= 1<<(bw - 1 - i);
+        }
+        input >>= 1;
+    }
+    return var;
+}
+
+  
+void crc32_init(uint32_t poly)
+{
+    int i;
+    int j;
+    uint32_t c;
+ 
+ 
+    poly = bitrev(poly, 32);
+    for(i=0; i<256; i++)
+    {
+        c = i;
+        for (j=0; j<8; j++)
+        {
+            c = (c & 1) ? (poly ^ (c >> 1)) : (c >> 1);
+        }
+        table[i] = c;
+    }
+}
+
+
+//计算CRC
+uint32_t soft_crc32(uint32_t crc, void* input, int len)
+{
+    int i;
+    uint8_t index;
+    uint8_t *p;
+    p = (uint8_t*)input;
+    for(i=0; i<len; i++)
+    {
+        index = (*p ^ crc);
+        crc = (crc >> 8) ^ table[index];
+        p++;
+    }
+    return crc;
+
+}
+
 /* add user code end 0 */
 
 /**
@@ -159,8 +214,38 @@ int main(void)
   
   Usart_Init();
   
+  wk_gpio_config();
+  
   char _putdata[] = "RK Usart library v0.1\r\n";
   RK_Usart_DMA_Transmit(RK_Usart_Phy_2,(uint8_t*)_putdata, strlen(_putdata));
+  
+  crc32_init(0x4C11DB7);
+  uint32_t A_CRC =0;
+  uint32_t B_CRC =0;
+  gpio_bits_reset(GPIOA, GPIO_PINS_0);
+  gpio_bits_set(GPIOA, GPIO_PINS_0);
+  
+  for (uint32_t i=0;i<1024;i++)
+  {
+    
+   A_CRC =  crc_block_calculate((uint32_t *)&Data,2048 );
+  }
+  gpio_bits_reset(GPIOA, GPIO_PINS_0);
+ 
+  delay_ms(200); 
+   
+  gpio_bits_set(GPIOA, GPIO_PINS_0);
+  for (uint32_t i=0;i<1024;i++)
+  {
+    B_CRC = soft_crc32(0xFFFFFFFF, &Data, 8192);
+  }
+  gpio_bits_reset(GPIOA, GPIO_PINS_0);
+
+  
+
+ 
+  A_CRC = A_CRC +B_CRC; 
+  
   /* add user code end 2 */
 
   while(1)
