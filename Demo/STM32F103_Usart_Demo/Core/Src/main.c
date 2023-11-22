@@ -45,7 +45,7 @@
 
 /* USER CODE BEGIN PV */
 RK_Usart_HandleTypeDef RKL_Uart1;
-RK_Usart_Handles RK_Usart_Handle ={NULL,NULL,NULL,NULL};
+RK_Usart_Handles RK_Usart_Handle ={NULL};
  
 /* USER CODE END PV */
 
@@ -57,21 +57,6 @@ void SystemClock_Config(void);
 
 /* Private user code ---------------------------------------------------------*/
 /* USER CODE BEGIN 0 */
-
-#ifdef USE_CUSTOM_HARDWARE_CRC16
-uint16_t RK_Usart_Crc16(uint8_t *ptr, uint16_t length)
-{
-  uint8_t _remainder =0;
-  if (length < 1 ) return 0;
-  if ((length %4) !=0 )
-    { 
-      memset(&ptr[length],0,3); //填充0对齐4字节否则硬件CRC计算不对
-      _remainder =1;
-    }
-  crc_data_reset();
-  return  crc_block_calculate((uint32_t *)ptr, ( length / 4) + _remainder ); 
-}
-#endif
 
 
 //用户Usart1接收回调函数
